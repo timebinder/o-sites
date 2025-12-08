@@ -1,0 +1,8 @@
+export { Hero } from './hero'
+export { Portfolio } from './portfolio'
+export { Accelerator } from './accelerator'
+export { Leadership } from './leadership'
+export { ContactForm } from './contact-form'
+export { Thesis } from './thesis'
+export { Navbar } from './navbar'
+export { Footer } from './footer'
