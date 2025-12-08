@@ -5,12 +5,7 @@ import { Quote } from 'lucide-react'
 
 export function Thesis() {
   return (
-    <section className="py-24 bg-gradient-to-b from-zinc-950 to-zinc-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-blue-500 to-purple-500 blur-3xl" />
-      </div>
-
+    <section className="py-24 bg-zinc-950 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,20 +15,21 @@ export function Thesis() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-            Our Thesis: We Stand at the Cusp of{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-              Geometric Abundance
-            </span>
+            Our Thesis: We Stand at the Cusp of Geometric Abundance.
           </h2>
 
           <p className="text-xl md:text-2xl text-zinc-300 mb-8 leading-relaxed">
             Thrive for 1,000 Years, Then Decide What&apos;s Next.
           </p>
 
-          <p className="text-lg text-zinc-400 mb-12 leading-relaxed">
+          <p className="text-lg text-zinc-400 mb-8 leading-relaxed">
             We see a civilization that expands into the infinite cosmos, navigating untold realms
             of cognitive experience with exhilarating discovery. All 8 Billion+ human collaborators
             onboard the spaceship we call Earth, exploring infinite potential.
+          </p>
+
+          <p className="text-xl md:text-2xl text-zinc-300 mb-12 font-medium">
+            Impacting The Next 1,000 Years
           </p>
 
           <motion.div

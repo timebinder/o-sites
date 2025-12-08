@@ -1,13 +1,13 @@
 import {
   Hero,
   Mission,
-  VideoSection,
   Portfolio,
   Accelerator,
-  PirateMetrics,
   Leadership,
-  ContactForm,
+  PirateMetrics,
+  AdvisoryServices,
   Thesis,
+  ContactForm,
   Navbar,
   Footer,
 } from '@/components/immortalventures'
@@ -19,11 +19,11 @@ export default function ImmortalVenturesPage() {
       <main>
         <Hero />
         <Mission />
-        <VideoSection />
         <Portfolio />
         <Accelerator />
-        <PirateMetrics />
         <Leadership />
+        <PirateMetrics />
+        <AdvisoryServices />
         <Thesis />
         <ContactForm />
       </main>
