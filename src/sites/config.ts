@@ -23,7 +23,7 @@ export interface SiteConfig {
 export const sites: Record<string, SiteConfig> = {
   immortalventures: {
     name: 'immortalventures',
-    domain: 'immortalventures.co',
+    domain: 'immortalventures.com',
     title: 'Immortal Ventures | Venture Builder & Growth Accelerator',
     description: 'Putting Humans First: Building and accelerating software startups through our private Venture Studio and public Growth Accelerator.',
     theme: {
