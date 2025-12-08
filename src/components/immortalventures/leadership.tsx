@@ -7,30 +7,33 @@ import Image from 'next/image'
 
 const testimonials = [
   {
-    quote: "Gavriel supported us in sharpening our business case and pitch. He has a razor sharp eye and always manages to focus in on the areas of concern your business needs to pay attention to. Prioritize Gav and you won't be disappointed :-)",
+    quote: "Gavriel supported us in sharpening our business case and pitch.\nHe has a razor sharp eye and always manages to focus in on the areas of concern your business needs to pay attention to.\nRunning a business is all about managing your time so you prioritize the right things.\nPrioritize Gav and you won't be disappointed :-)",
     author: "Joost Schouten",
     role: "Founder",
-    company: "nestr.io",
+    company: "www.nestr.io",
     image: "/images/immortalventures/joost-300x300.jpeg",
   },
   {
-    quote: "Gavriel has amazingly sharp insights into marketing, and business acumen. He has a special gift to be able to break these insights down clearly. His mentorship and generosity is unmatched. We cannot imagine having a more suitable marketing and business advisor.",
+    quote: "Gavriel has amazingly sharp insights into marketing, and business acumen.\nHe has a special gift to be able to break these insights down clearly.\nHis mentorship and generosity is unmatched\nWe are extremely grateful to have Gavriel interface with, and guide our senior leadership team to increasing levels of success.\nWe cannot imagine having a more suitable marketing and business advisor to work with, and I personally cannot imagine how he would not be able to bring massive, transformational value to almost any organisation that wishes to improve their operations, or thinking.",
     author: "Jerome Kelsey",
     role: "Founder",
-    company: "freeos.io",
+    company: "www.freeos.io",
     image: "/images/immortalventures/jerome-300x300.jpeg",
   },
 ]
 
+// Exact list from docs
 const credentials = [
   'Merrill Lynch', 'BOA', 'ING Barings', 'Digital Look', 'Stabull',
-  'Cryptospace', 'Bitcoin.com', 'Sabio', 'Avaya', 'Wirex',
-  'Jarvis', 'Orange Mobile', 'Hypha', 'Pizza Express', 'Renault'
+  'Cryptospace', 'Bitcoin.com', 'Database Group', 'Sabio', 'Avaya',
+  'Syncoms', 'Wirex', 'Fuel-IT', 'Jarvis', 'Orange Mobile',
+  'Hypha', 'Pizza Express', 'Renault'
 ]
 
+// Exact roles from docs
 const roles = [
   'CMO', 'Head of Marketing', 'Web Marketing Director', 'Acquisition Manager',
-  'Product Marketing Manager', 'Product Manager', 'SEO Manager', 'Launch Manager'
+  'Product Marketing Manager', 'Product Manager', 'SEO Manager', 'Launch Manager', 'Copywriter'
 ]
 
 export function Leadership() {
@@ -72,29 +75,23 @@ export function Leadership() {
                 <div className="md:col-span-2 p-8">
                   <h3 className="text-3xl font-bold text-white mb-2">Gavriel Shaw</h3>
                   <p className="text-blue-400 font-medium mb-4">Chairman</p>
-                  <p className="text-zinc-300 mb-6 leading-relaxed">
-                    British-born, living in Latin America, with a 20-year international career
-                    supporting GTM for world-class organizations.
+                  <p className="text-zinc-300 mb-4 leading-relaxed">
+                    British-born, living in Latin America, with a 20-year international career.
                   </p>
 
-                  {/* Credentials */}
+                  {/* Companies Supported - exact text from docs */}
                   <div className="mb-6">
-                    <p className="text-zinc-500 text-sm mb-2">Companies Supported</p>
-                    <div className="flex flex-wrap gap-2">
-                      {credentials.slice(0, 10).map((company) => (
-                        <span key={company} className="text-xs px-2 py-1 rounded bg-zinc-800 text-zinc-400">
-                          {company}
-                        </span>
-                      ))}
-                      <span className="text-xs px-2 py-1 text-zinc-500">+5 more</span>
-                    </div>
+                    <p className="text-zinc-500 text-sm mb-2">Supporting GTM for:</p>
+                    <p className="text-zinc-400 text-sm leading-relaxed">
+                      {credentials.join(', ')}, and more.
+                    </p>
                   </div>
 
-                  {/* Roles */}
+                  {/* Roles - exact text from docs */}
                   <div>
-                    <p className="text-zinc-500 text-sm mb-2">Past Roles</p>
+                    <p className="text-zinc-500 text-sm mb-2">Past roles include:</p>
                     <div className="flex flex-wrap gap-2">
-                      {roles.slice(0, 5).map((role) => (
+                      {roles.map((role) => (
                         <span key={role} className="text-xs px-2 py-1 rounded bg-blue-500/10 text-blue-400">
                           {role}
                         </span>
@@ -120,8 +117,8 @@ export function Leadership() {
               <Card className="bg-zinc-950/30 border-zinc-800 h-full">
                 <CardContent className="p-6">
                   <Quote className="w-8 h-8 text-blue-400/30 mb-4" />
-                  <blockquote className="text-zinc-300 mb-6 leading-relaxed">
-                    &ldquo;{testimonial.quote}&rdquo;
+                  <blockquote className="text-zinc-300 mb-6 leading-relaxed whitespace-pre-line">
+                    {testimonial.quote}
                   </blockquote>
                   <div className="flex items-center gap-4">
                     <div className="relative w-12 h-12 rounded-full overflow-hidden">

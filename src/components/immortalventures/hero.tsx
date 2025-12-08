@@ -28,7 +28,7 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
@@ -36,22 +36,11 @@ export function Hero() {
           Immortal Ventures
         </motion.h1>
 
-        <motion.p
-          className="text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto mb-8 leading-relaxed"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-        >
-          Putting Humans First: Artificial Intelligence Is Cool — But Let&apos;s Prioritize
-          Human Wellbeing As We Learn To Accelerate Beyond Mechanical-Robotics & Large Language
-          Models Into Bio-Energetic Quantum Mastery.
-        </motion.p>
-
         <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           <Button
             size="lg"

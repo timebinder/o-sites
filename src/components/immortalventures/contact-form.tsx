@@ -87,11 +87,10 @@ export function ContactForm() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Advisory Services
+            Immortal Ventures Advisory Services
           </h2>
           <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-            Our team spans the gamut of modern startup. Let us know the gist of your situation,
-            gaps or requirements, and the right person will contact you.
+            Our team spans the gamut of modern startup. Let us know the gist of your situation, gaps or requirements, and the right person on our team will contact you with service options or suitable suggestions.
           </p>
         </motion.div>
 

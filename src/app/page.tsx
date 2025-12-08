@@ -1,8 +1,10 @@
 import {
   Hero,
+  Mission,
   VideoSection,
   Portfolio,
   Accelerator,
+  PirateMetrics,
   Leadership,
   ContactForm,
   Thesis,
@@ -16,9 +18,11 @@ export default function ImmortalVenturesPage() {
       <Navbar />
       <main>
         <Hero />
+        <Mission />
         <VideoSection />
         <Portfolio />
         <Accelerator />
+        <PirateMetrics />
         <Leadership />
         <Thesis />
         <ContactForm />

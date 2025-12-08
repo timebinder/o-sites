@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server'
-
-// Contact form API route
-// For now, logs to console. Will integrate with Supabase next.
+import { supabase } from '@/lib/supabase'
 
 interface ContactFormData {
   name: string
@@ -34,24 +32,27 @@ export async function POST(request: Request) {
       )
     }
 
-    // Log the submission (will replace with Supabase insert)
-    console.log('Contact form submission:', {
-      ...body,
-      timestamp: new Date().toISOString(),
-    })
+    // Insert into Supabase (websites schema)
+    const { error } = await supabase
+      .schema('websites')
+      .from('contact_submissions')
+      .insert({
+        name: body.name,
+        email: body.email,
+        company: body.company || null,
+        stage: body.stage || null,
+        message: body.message,
+        site: body.site,
+        submission_type: body.type,
+      })
 
-    // TODO: Integrate with Supabase
-    // const { data, error } = await supabase
-    //   .from('websites.contact_submissions')
-    //   .insert({
-    //     name: body.name,
-    //     email: body.email,
-    //     company: body.company,
-    //     stage: body.stage,
-    //     message: body.message,
-    //     site: body.site,
-    //     type: body.type,
-    //   })
+    if (error) {
+      console.error('Supabase insert error:', error)
+      return NextResponse.json(
+        { error: 'Failed to save submission' },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json(
       { success: true, message: 'Form submitted successfully' },
