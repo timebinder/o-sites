@@ -1,4 +1,5 @@
 export { Hero } from './hero'
+export { VideoSection } from './video-section'
 export { Portfolio } from './portfolio'
 export { Accelerator } from './accelerator'
 export { Leadership } from './leadership'

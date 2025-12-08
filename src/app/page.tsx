@@ -1,5 +1,6 @@
 import {
   Hero,
+  VideoSection,
   Portfolio,
   Accelerator,
   Leadership,
@@ -15,6 +16,7 @@ export default function ImmortalVenturesPage() {
       <Navbar />
       <main>
         <Hero />
+        <VideoSection />
         <Portfolio />
         <Accelerator />
         <Leadership />
