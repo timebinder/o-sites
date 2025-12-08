@@ -32,6 +32,15 @@ export async function POST(request: Request) {
       )
     }
 
+    // Check if Supabase is configured
+    if (!supabase) {
+      console.log('Supabase not configured - logging submission:', body)
+      return NextResponse.json(
+        { success: true, message: 'Form submitted (logging mode)' },
+        { status: 200 }
+      )
+    }
+
     // Insert into Supabase (websites schema)
     const { error } = await supabase
       .schema('websites')
