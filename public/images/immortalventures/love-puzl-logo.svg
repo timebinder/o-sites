@@ -1,0 +1,53 @@
+<svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Rounded corners clip -->
+    <clipPath id="logo-rounded-corners">
+      <rect x="0" y="0" width="48" height="48" rx="4" ry="4" />
+    </clipPath>
+
+    <!-- Heart cutout mask -->
+    <mask id="heart-cutout">
+      <rect x="0" y="0" width="48" height="48" fill="white" />
+      <path d="M 24 37.4 C 21.6 35.6 10.4 26.5 10.4 18 C 10.4 14.8 12.6 12 16.8 12 C 20.1 12 22.4 14.4 24 16.8 C 25.6 14.4 27.9 12 31.2 12 C 35.4 12 37.6 14.8 37.6 18 C 37.6 26.5 26.4 35.6 24 37.4 Z" fill="black" />
+    </mask>
+
+    <!-- Gradients -->
+    <linearGradient id="tl-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F08DB3" />
+      <stop offset="100%" stop-color="#D96A8F" />
+    </linearGradient>
+
+    <linearGradient id="tr-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A594D1" />
+      <stop offset="100%" stop-color="#6E5FA0" />
+    </linearGradient>
+
+    <linearGradient id="bl-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BB6E0" />
+      <stop offset="100%" stop-color="#4A92C6" />
+    </linearGradient>
+
+    <linearGradient id="br-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F08DB3" />
+      <stop offset="100%" stop-color="#D96A8F" />
+    </linearGradient>
+  </defs>
+
+  <!-- Puzzle pieces with heart cutout (scaled to 48x48) -->
+  <g clip-path="url(#logo-rounded-corners)" mask="url(#heart-cutout)">
+    <!-- Top-Left piece -->
+    <path d="M 0 0 L 24 0 L 24 2.5 A 3.5 3.5 0 0 1 24 9.5 L 24 24 L 9.5 24 A 3.5 3.5 0 0 1 2.5 24 L 0 24 L 0 0 Z" fill="url(#tl-gradient)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1"/>
+
+    <!-- Top-Right piece -->
+    <path d="M 24 0 L 48 0 L 48 24 L 45.5 24 A 3.5 3.5 0 0 1 38.5 24 L 24 24 L 24 9.5 A 3.5 3.5 0 0 0 24 2.5 L 24 0 Z" fill="url(#tr-gradient)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1"/>
+
+    <!-- Bottom-Left piece -->
+    <path d="M 0 24 L 2.5 24 A 3.5 3.5 0 0 0 9.5 24 L 24 24 L 24 38.5 A 3.5 3.5 0 0 1 24 45.5 L 24 48 L 0 48 L 0 24 Z" fill="url(#bl-gradient)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1"/>
+
+    <!-- Bottom-Right piece -->
+    <path d="M 24 24 L 38.5 24 A 3.5 3.5 0 0 0 45.5 24 L 48 24 L 48 48 L 24 48 L 24 45.5 A 3.5 3.5 0 0 0 24 38.5 L 24 24 Z" fill="url(#br-gradient)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1"/>
+  </g>
+
+  <!-- "Puzl" text -->
+  <text x="58" y="34" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#1a1a1a" letter-spacing="-0.5">Puzl</text>
+</svg>

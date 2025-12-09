@@ -1,73 +1,82 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Card, CardContent } from '@/components/ui/card'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 export function Mission() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end']
+  })
+
+  // Horizontal split - headline goes up, body text goes down
+  // Starts at 40% scroll progress to give time to read Our Mission
+  const topDoorY = useTransform(scrollYProgress, [0.4, 0.8], ['0%', '-100%'])
+  const bottomDoorY = useTransform(scrollYProgress, [0.4, 0.8], ['0%', '100%'])
+
   return (
-    <section className="py-24 bg-black">
-      <div className="container mx-auto px-6">
+    <div ref={sectionRef} className="relative h-[300vh]">
+      {/* Single sticky container that stays in place for the entire scroll */}
+      <div className="sticky top-0 h-screen z-10 overflow-hidden">
+        {/* What We Do - sits BEHIND the doors */}
+        <section className="absolute inset-0 flex items-center justify-center bg-zinc-900">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-[1.15]">
+                What We Do
+              </h2>
+              <p className="text-xl md:text-2xl text-zinc-400 leading-relaxed max-w-3xl mx-auto">
+                Immortal Ventures builds and supports software startups (from digital platforms to mobile apps) through our private Venture Studio and a public Growth Accelerator
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Mission - TOP DOOR (only headline - positioned at bottom of door) */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          className="absolute top-0 left-0 w-full h-1/2 overflow-hidden"
+          style={{ y: topDoorY }}
         >
-          <Card className="bg-zinc-900/50 border-zinc-800 overflow-hidden">
-            <CardContent className="p-8 md:p-12">
-              <motion.h2
-                className="text-3xl md:text-4xl font-bold text-white mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                Our Mission
-              </motion.h2>
-              <motion.p
-                className="text-lg md:text-xl text-zinc-300 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                Putting Humans First: Artificial Intelligence Is Cool — But Let&apos;s Prioritize Human Wellbeing As We Learn To Accelerate Beyond Mechanical-Robotics &amp; Large Language Models Into Bio-Energetic Quantum Mastery Over The Next 1,000 Years And Beyond
-              </motion.p>
-            </CardContent>
-          </Card>
+          <section className="absolute inset-0 flex items-end justify-center pb-4 bg-slate-900">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: 'radial-gradient(ellipse at 50% 100%, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
+              }}
+            />
+            <div className="container mx-auto px-6 relative">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1]">
+                  Our Mission
+                </h2>
+              </div>
+            </div>
+          </section>
         </motion.div>
 
+        {/* Our Mission - BOTTOM DOOR (only body text - positioned at top of door) */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-8"
+          className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden"
+          style={{ y: bottomDoorY }}
         >
-          <Card className="bg-zinc-900/30 border-zinc-800">
-            <CardContent className="p-8 md:p-12">
-              <motion.h3
-                className="text-2xl md:text-3xl font-bold text-white mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                What We Do
-              </motion.h3>
-              <motion.p
-                className="text-lg text-zinc-400 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                Immortal Ventures builds and supports software startups (from digital platforms to mobile apps) through our private Venture Studio and a public Growth Accelerator
-              </motion.p>
-            </CardContent>
-          </Card>
+          <section className="absolute inset-0 flex items-start justify-center pt-4 bg-slate-900">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: 'radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
+              }}
+            />
+            <div className="container mx-auto px-6 relative">
+              <div className="max-w-4xl mx-auto text-center">
+                <p className="text-xl md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto">
+                  <span className="font-semibold text-blue-400">Putting Humans First:</span> Artificial Intelligence Is Cool — But Let&apos;s Prioritize Human Wellbeing As We Learn To Accelerate Beyond Mechanical-Robotics &amp; Large Language Models Into Bio-Energetic Quantum Mastery Over The Next 1,000 Years And Beyond
+                </p>
+              </div>
+            </div>
+          </section>
         </motion.div>
       </div>
-    </section>
+    </div>
   )
 }

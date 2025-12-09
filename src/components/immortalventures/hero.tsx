@@ -1,79 +1,68 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 
 export function Hero() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start']
+  })
+
+  // Parallax effect on background image
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  // Move text downward as user scrolls (stays visible longer while fading)
+  const textY = useTransform(scrollYProgress, [0, 0.5], ['0%', '15%'])
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/images/immortalventures/immortal-bridge.jpg)' }}
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden z-[5]">
+      {/* Background Image with Parallax - extended beyond viewport for full reveal */}
+      <motion.div
+        className="absolute -inset-x-0 -top-20 -bottom-40 bg-contain bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/images/immortalventures/immortal-bridge.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 60%',
+          y: bgY
+        }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
+      </motion.div>
+
+      {/* Subtle grid overlay */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <p className="text-blue-400 font-medium tracking-widest uppercase mb-4">
-            Venture Builder & Growth Accelerator
-          </p>
-        </motion.div>
+      <motion.div
+        className="relative z-10 container mx-auto px-6 text-left"
+        style={{ opacity, y: textY }}
+      >
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.05] whitespace-nowrap">
+          Venture Builder <span className="text-zinc-400">&amp;</span> Growth Accelerator
+        </h1>
 
-        <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-        >
+        <p className="text-zinc-400 font-medium tracking-widest uppercase text-base md:text-lg">
           Immortal Ventures
-        </motion.h1>
+        </p>
+      </motion.div>
 
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-        >
-          <Button
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg"
-            asChild
-          >
-            <a href="#accelerator">Join the Accelerator</a>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg"
-            asChild
-          >
-            <a href="#portfolio">View Portfolio</a>
-          </Button>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ArrowDown className="w-6 h-6 text-white/50" />
-          </motion.div>
-        </motion.div>
-      </div>
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <ArrowDown className="w-5 h-5 text-zinc-500" />
+      </motion.div>
     </section>
   )
 }
